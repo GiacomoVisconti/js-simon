@@ -57,7 +57,7 @@ const number_3_value = number_3_El.value;
 const number_4_value = number_4_El.value;
 
 //Imposto il timer per il codice
-setTimeout(hidden_reveal, 3000);
+setTimeout(hidden_reveal, 30000);
 fill_list(number_list_El, numbers)
 
 confirm_button_El.addEventListener('click', (e) => {
@@ -81,7 +81,6 @@ confirm_button_El.addEventListener('click', (e) => {
 })
 
 
-console.log(numbers);
 
 
 
