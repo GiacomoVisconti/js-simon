@@ -49,7 +49,7 @@ const confirm_button_El = document.getElementById('confirm-button')
 const message_El = document.getElementById('message')
 
 //Imposto il timer per il codice
-setTimeout(hidden_reveal, 3000);
+setTimeout(hidden_reveal, 30000);
 fill_list(number_list_El, numbers)
 
 console.log(numbers);
@@ -64,15 +64,18 @@ confirm_button_El.addEventListener('click', (e) => {
     const number_2_value = number_2_El.value;
     const number_3_value = number_3_El.value;
     const number_4_value = number_4_El.value;
+
+    //Carico l'array con i numeri inseriti dall'utente
     const user_numbers = [number_0_value, number_1_value, number_2_value, number_3_value, number_4_value];  
 
+    //Nascondo le celle di input dei numeri e il bottone, per lasciar spazio al messaggio di risultato
     number_cells_input_El.classList.add('d-none')
     message_El.classList.add('d-block')
     confirm_button_El.classList.add('d-none')
-    console.log(user_numbers);
+    // todo console.log(user_numbers);
     let num_uguali = 0
 
-
+    //Per ogni numero inserito dall'utente eseguo il controllo dei numeri generati con un for
     for(let i = 0; i < numbers.length; i++){
 
         if (user_numbers[i] == numbers[i]){
@@ -82,14 +85,17 @@ confirm_button_El.addEventListener('click', (e) => {
         
     }
 
+    //Stampo il messaggio a seconda del risultato
     if (num_uguali == numbers.length){
         message_El.innerText = 'BRAVO! HAI INDOVINATO TUTTI I NUMERI'
     } else {
-        message_El.innerText = "Hai indovinato " + num_uguali + ", riprova per indovinarli tutti"
+        message_El.innerText = `Hai indovinato ${num_uguali} numeri, riprova per indovinarli tutti.
+        I numeri da indovinare: ${numbers}
+        Quelli che hai inserito: ${user_numbers}`
     }
 
 
-    console.log(num_uguali);
+    // todo console.log(num_uguali);
 
 })
 
