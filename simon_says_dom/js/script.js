@@ -48,35 +48,48 @@ const number_4_El = document.getElementById('number_4');
 const confirm_button_El = document.getElementById('confirm-button')
 const message_El = document.getElementById('message')
 
-
-//Dichiaro le variabili di input 
-const number_0_value = number_0_El.value;
-const number_1_value = number_1_El.value;
-const number_2_value = number_2_El.value;
-const number_3_value = number_3_El.value;
-const number_4_value = number_4_El.value;
-
 //Imposto il timer per il codice
-setTimeout(hidden_reveal, 30000);
+setTimeout(hidden_reveal, 3000);
 fill_list(number_list_El, numbers)
 
-confirm_button_El.addEventListener('click', (e) => {
+console.log(numbers);
 
+confirm_button_El.addEventListener('click', (e) => {
+    
     e.preventDefault();
+    
+    //Dichiaro le variabili di input 
+    const number_0_value = number_0_El.value;
+    const number_1_value = number_1_El.value;
+    const number_2_value = number_2_El.value;
+    const number_3_value = number_3_El.value;
+    const number_4_value = number_4_El.value;
+    const user_numbers = [number_0_value, number_1_value, number_2_value, number_3_value, number_4_value];  
 
     number_cells_input_El.classList.add('d-none')
-    // message_El.classList.add('d-block')
+    message_El.classList.add('d-block')
+    confirm_button_El.classList.add('d-none')
+    console.log(user_numbers);
+    let num_uguali = 0
 
-    if(numbers[0] === number_0_value && numbers[1] === number_1_value 
-        && numbers[2] === number_2_value && numbers[3] === number_3_value 
-        && numbers[4] === number_4_value) {
-        
-            message_El.innerHTML = "ESATTO, I NUMERI SONO CORRETTI"
-            confirm_button_El.classList.add('d-none')
+
+    for(let i = 0; i < numbers.length; i++){
+
+        if (user_numbers[i] == numbers[i]){
+            num_uguali = num_uguali + 1
             
-        } 
-        message_El.innerHTML = "ERRATO, RIPROVA"
-        confirm_button_El.classList.add('d-none')
+        }
+        
+    }
+
+    if (num_uguali == numbers.length){
+        message_El.innerText = 'BRAVO! HAI INDOVINATO TUTTI I NUMERI'
+    } else {
+        message_El.innerText = "Hai indovinato " + num_uguali + ", riprova per indovinarli tutti"
+    }
+
+
+    console.log(num_uguali);
 
 })
 
