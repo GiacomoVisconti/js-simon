@@ -11,15 +11,18 @@ function random_number(min, max) {
 }
 
 /**
- * This function fill a list in DOM 
+ * This function fill a list in DOM without duplicates
  */
 function fill_list(number_list_El, numbers){
     let string = ""
 
-    for (let i = 0; i <= 4; i++){
+    while (numbers.length < 5){
         let number = random_number(1,50)
-        string += '<li>' + number + '</li>'
-        numbers.push(number)
+
+        if (!numbers.includes(number)) {
+            string += '<li>' + number + '</li>'
+            numbers.push(number)
+        }
     }
     number_list_El.innerHTML = string
 }
